@@ -903,6 +903,18 @@
     "id": "4042b93f-8576-417a-895b-566da7f110e2",
     "name": "LikeOther",
     "commands": [{
+      "id": "6184788c-6568-4e97-a54a-052a55c42d66",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=.relative:nth-child(2) > .flex > .flex:nth-child(1) > .my-auto",
+      "targets": [
+        ["css=.relative:nth-child(2) > .flex > .flex:nth-child(1) > .my-auto", "css:finder"],
+        ["xpath=//div[@id='homepage']/div[2]/div[3]/div/p", "xpath:idRelative"],
+        ["xpath=//div[2]/div[3]/div/p", "xpath:position"],
+        ["xpath=//p[contains(.,'0')]", "xpath:innerText"]
+      ],
+      "value": "likeVar"
+    }, {
       "id": "2f053724-446f-4d25-ab37-dc69f0475917",
       "comment": "",
       "command": "click",
@@ -911,18 +923,6 @@
         ["css=.relative:nth-child(2) .flex:nth-child(1) path", "css:finder"]
       ],
       "value": ""
-    }, {
-      "id": "6184788c-6568-4e97-a54a-052a55c42d66",
-      "comment": "",
-      "command": "storeText",
-      "target": "xpath=//div[2]/div[2]/div[2]/div/p",
-      "targets": [
-        ["css=.relative:nth-child(2) > .flex > .flex:nth-child(1) > .my-auto", "css:finder"],
-        ["xpath=//div[@id='homepage']/div[2]/div[2]/div/p", "xpath:idRelative"],
-        ["xpath=//div[2]/div[2]/div[2]/div/p", "xpath:position"],
-        ["xpath=//p[contains(.,'1')]", "xpath:innerText"]
-      ],
-      "value": "likeVar"
     }, {
       "id": "578e79c1-faf4-4f0b-b572-8634227a45ec",
       "comment": "",
@@ -938,24 +938,78 @@
       "targets": [],
       "value": "expected"
     }, {
-      "id": "81bf7e9c-db7a-4dee-b6d2-607b91e51319",
+      "id": "75fd491c-b62b-45c2-90a3-f433405ffbf0",
       "comment": "",
-      "command": "echo",
-      "target": "${expected}",
+      "command": "storeText",
+      "target": "css=.relative:nth-child(2) > .flex > .flex:nth-child(1) > .my-auto",
+      "targets": [],
+      "value": "new"
+    }, {
+      "id": "88a91e74-15d1-45c7-ae5e-dabd220dcd62",
+      "comment": "",
+      "command": "if",
+      "target": "${likeVar} < ${new}",
       "targets": [],
       "value": ""
     }, {
-      "id": "75fd491c-b62b-45c2-90a3-f433405ffbf0",
+      "id": "7e682058-fb03-4269-9a97-076fbee19f89",
       "comment": "",
-      "command": "assertValue",
-      "target": "css=.relative:nth-child(2) > .flex > .flex:nth-child(1) > .my-auto",
+      "command": "executeScript",
+      "target": "let raw = Number(${likeVar}); return raw +1",
+      "targets": [],
+      "value": "expected"
+    }, {
+      "id": "6fba9fcc-c835-47f5-b1d8-36f13fdffbdf",
+      "comment": "",
+      "command": "assertText",
+      "target": "xpath=//div[@id='homepage']/div[2]/div[3]/div/p",
       "targets": [
         ["css=.relative:nth-child(2) > .flex > .flex:nth-child(1) > .my-auto", "css:finder"],
-        ["xpath=//div[@id='homepage']/div[2]/div[2]/div/p", "xpath:idRelative"],
-        ["xpath=//div[2]/div[2]/div[2]/div/p", "xpath:position"],
-        ["xpath=//p[contains(.,'1')]", "xpath:innerText"]
+        ["xpath=//div[@id='homepage']/div[2]/div[3]/div/p", "xpath:idRelative"],
+        ["xpath=//div[2]/div[3]/div/p", "xpath:position"],
+        ["xpath=//p[contains(.,'0')]", "xpath:innerText"]
       ],
       "value": "${expected}"
+    }, {
+      "id": "3ac9cb3f-15de-451e-a790-625fedac401d",
+      "comment": "",
+      "command": "else",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "70a39d5e-51f7-4546-89a2-36a07cf1ac07",
+      "comment": "",
+      "command": "executeScript",
+      "target": "let raw = Number(${likeVar}); return raw -1",
+      "targets": [],
+      "value": "expected"
+    }, {
+      "id": "51f34a72-4cbd-449b-9a23-cbb98ff496d5",
+      "comment": "",
+      "command": "assertText",
+      "target": "xpath=//div[@id='homepage']/div[2]/div[3]/div/p",
+      "targets": [
+        ["css=.relative:nth-child(2) > .flex > .flex:nth-child(1) > .my-auto", "css:finder"],
+        ["xpath=//div[@id='homepage']/div[2]/div[3]/div/p", "xpath:idRelative"],
+        ["xpath=//div[2]/div[3]/div/p", "xpath:position"],
+        ["xpath=//p[contains(.,'0')]", "xpath:innerText"]
+      ],
+      "value": "${expected}"
+    }, {
+      "id": "5747739b-a93f-4e65-9847-800db54208ae",
+      "comment": "",
+      "command": "executeScript",
+      "target": "let raw = Number(${likeVar}); return raw +1",
+      "targets": [],
+      "value": "expected"
+    }, {
+      "id": "dceb99b5-bf14-40af-8678-34f8b8426b3f",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
     }]
   }, {
     "id": "c462dc68-3ce8-4515-94c5-526c41201873",
