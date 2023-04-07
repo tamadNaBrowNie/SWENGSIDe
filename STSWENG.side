@@ -330,7 +330,7 @@
       "command": "type",
       "target": "name=email",
       "targets": [],
-      "value": "n@gmail.com"
+      "value": "g@gmail.com"
     }, {
       "id": "bd268b17-f47b-43f2-8319-f6786a756c67",
       "comment": "",
@@ -1190,7 +1190,7 @@
     }]
   }, {
     "id": "29e6c7a2-4106-4af7-913b-91076ecd1a57",
-    "name": "EditPost",
+    "name": "EditPostCaption",
     "commands": [{
       "id": "ad4a41d1-9d3f-422f-820e-a1fa874ff02b",
       "comment": "",
@@ -1210,13 +1210,6 @@
         ["xpath=//p[contains(.,'this is an omen.')]", "xpath:innerText"]
       ],
       "value": "caption"
-    }, {
-      "id": "e9e57985-e56e-4113-8d8f-0bf29d0a29b1",
-      "comment": "",
-      "command": "echo",
-      "target": "${caption}",
-      "targets": [],
-      "value": ""
     }, {
       "id": "0baa6dac-3a99-467e-a1c6-fff007e7c7a6",
       "comment": "",
@@ -1255,13 +1248,6 @@
       "targets": [],
       "value": "input"
     }, {
-      "id": "dff17783-f2f9-4bec-80a5-b927f053860a",
-      "comment": "",
-      "command": "echo",
-      "target": "${caption}",
-      "targets": [],
-      "value": ""
-    }, {
       "id": "648bfc72-9f69-4fef-9138-b9431b8c65ae",
       "comment": "",
       "command": "type",
@@ -1292,6 +1278,168 @@
       "targets": [],
       "value": "${input}"
     }]
+  }, {
+    "id": "2de06262-03d0-433d-aabe-cbcfb109679c",
+    "name": "ViewPostsInProfile",
+    "commands": [{
+      "id": "b0aa834a-e8a7-487e-accb-1379a559beab",
+      "comment": "start test",
+      "command": "open",
+      "target": "/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c35d8c93-f186-4a8f-b4ac-ff0bd816cb5e",
+      "comment": "Login User with posts",
+      "command": "run",
+      "target": "Login Valid",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8e9db535-599a-45d4-8275-9c04c72db958",
+      "comment": "Wait for profile link",
+      "command": "waitForElementPresent",
+      "target": "linkText=asdf@asdf.org",
+      "targets": [
+        ["linkText=asdf@asdf.org", "linkText"],
+        ["css=.my-auto:nth-child(5) > .hover\\3Atransition", "css:finder"],
+        ["xpath=//div[@id='__next']/div/div[3]/div[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/profile/gfCTo9hEr0PmKA9Pfr4rM5kflmA3')]", "xpath:href"],
+        ["xpath=//div[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'asdf@asdf.org')]", "xpath:innerText"]
+      ],
+      "value": "2000"
+    }, {
+      "id": "7260a520-3b3c-4107-8968-9aab7c900251",
+      "comment": "Go to profile page",
+      "command": "click",
+      "target": "css=.my-auto:nth-child(5) > .hover\\3Atransition",
+      "targets": [
+        ["linkText=shawnaberin@gmail.com", "linkText"],
+        ["css=.my-auto:nth-child(5) > .hover\\3Atransition", "css:finder"],
+        ["xpath=//div[@id='__next']/div/div[3]/div[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/profile/u4FygnL2bjXccq2GnJyljWLOxLI2')]", "xpath:href"],
+        ["xpath=//div[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'shawnaberin@gmail.com')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a923367b-2377-4f22-b231-f0aac17bda2b",
+      "comment": "wait for posts to appear",
+      "command": "waitForElementPresent",
+      "target": "css=.mx-auto:nth-child(1)",
+      "targets": [
+        ["css=.mx-auto:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='__next']/div[2]/div[2]/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div", "xpath:position"]
+      ],
+      "value": "2000"
+    }]
+  }, {
+    "id": "61e6c568-7089-4c83-bac5-248e96259dce",
+    "name": "ViewPostsInEmptyProfile",
+    "commands": [{
+      "id": "44524141-f61f-404c-827e-971f194c5035",
+      "comment": "",
+      "command": "open",
+      "target": "/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6ff87326-8769-47ff-87d8-26ba4bbcb49f",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='__next']/div[2]/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": "shawnaberin@gmail.com"
+    }, {
+      "id": "584805dd-e711-474d-82d1-f68efd32d0e2",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='__next']/div[2]/div/div/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "shawnaberin"
+    }, {
+      "id": "be696732-33cd-4535-925b-c885c8b4e83f",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[contains(.,'LOGIN')]",
+      "targets": [
+        ["css=.w-1\\/3", "css:finder"],
+        ["xpath=//div[@id='__next']/div[2]/div/div/form/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'LOGIN')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "aae8461a-0ede-46be-ac9a-39267e779a49",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "css=.my-auto:nth-child(5) > .hover\\3Atransition",
+      "targets": [
+        ["linkText=asdf@asdf.org", "linkText"],
+        ["css=.my-auto:nth-child(5) > .hover\\3Atransition", "css:finder"],
+        ["xpath=//div[@id='__next']/div/div[3]/div[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/profile/gfCTo9hEr0PmKA9Pfr4rM5kflmA3')]", "xpath:href"],
+        ["xpath=//div[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'asdf@asdf.org')]", "xpath:innerText"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "3632112b-622a-45cf-b7f0-43146c8ffe52",
+      "comment": "",
+      "command": "assertText",
+      "target": "linkText=shawnaberin@gmail.com",
+      "targets": [
+        ["linkText=shawnaberin@gmail.com", "linkText"],
+        ["css=.my-auto:nth-child(5) > .hover\\3Atransition", "css:finder"],
+        ["xpath=//div[@id='__next']/div/div[3]/div[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/profile/u4FygnL2bjXccq2GnJyljWLOxLI2')]", "xpath:href"],
+        ["xpath=//div[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'shawnaberin@gmail.com')]", "xpath:innerText"]
+      ],
+      "value": "shawnaberin@gmail.com"
+    }, {
+      "id": "b9151de2-9259-4486-84a0-737afccf9023",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//div[@id='__next']/div/div[3]/div[4]/a",
+      "targets": [
+        ["linkText=asdf@asdf.org", "linkText"],
+        ["css=.my-auto:nth-child(5) > .hover\\3Atransition", "css:finder"],
+        ["xpath=//div[@id='__next']/div/div[3]/div[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/profile/gfCTo9hEr0PmKA9Pfr4rM5kflmA3')]", "xpath:href"],
+        ["xpath=//div[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'asdf@asdf.org')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "aa039f66-706c-410b-8e34-12865ef2d8ef",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h2",
+      "targets": [
+        ["css=h2", "css:finder"],
+        ["xpath=//div[@id='__next']/div[2]/div[2]/h2", "xpath:idRelative"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'No posts found!')]", "xpath:innerText"]
+      ],
+      "value": "No posts found! "
+    }]
   }],
   "suites": [{
     "id": "40ee2cb5-0069-4cb7-85ad-337a65c9f82c",
@@ -1311,9 +1459,16 @@
     "id": "6f1d3691-7401-4f2c-89f3-d6bfac82878b",
     "name": "User Actions",
     "persistSession": false,
-    "parallel": false,
+    "parallel": true,
     "timeout": 300,
     "tests": ["544daad0-d1cf-4ad9-8b6c-262a9b593cfa", "09f2e34d-94e9-4cec-bde6-a626a57b6353"]
+  }, {
+    "id": "8184893c-eae8-4630-b2a1-532c73db7607",
+    "name": "Post Operations",
+    "persistSession": false,
+    "parallel": true,
+    "timeout": 300,
+    "tests": ["5967d3f9-3fd6-4901-82e3-7c49e6f500cf", "ab22e096-3422-4821-aaba-30526159d00d", "29e6c7a2-4106-4af7-913b-91076ecd1a57"]
   }],
   "urls": ["http://localhost:3000/"],
   "plugins": []
